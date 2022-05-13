@@ -1,0 +1,113 @@
+                                                      MINIKUBE
+
+
+1.Install the docker
+
+sudo yum update -y;sudo yum install docker -y;sudo systemctl start docker;sudo usermod -a -G docker ec2-user;sudo systemctl enable docker;sudo systemctl status docker
+
+
+2. Install the kubectl
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+sudo chmod +x kubectl
+
+sudo mv kubectl /usr/bin/
+
+
+sudo su -
+
+kubectl
+
+
+3. Install Minikube
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+yum install conntrack -y
+
+minikube start --vm-driver=none
+
+
+4.Install git and clone ur repo
+
+yum install git -y
+
+git clone https://github.com/PavanKumarMutteni/ElectricityBillPaymentApp.git
+
+go inside the config folder
+
+5.deploy four files
+  
+   1.first deploy both deployment_db and service_db
+   2.run the command kubectl get svc
+   3.copy the ip address of postgresservice
+   4.then change the ip address in app_deployment
+   5.deploy both other files also
+   6.kubectl apply -f file name (for deployment)
+
+6.final command to see the running port
+  kubectl get all
+then copy the port no of service/myapp
+
+7.Go to browser and access the page using
+ ipaddressofec2:port
+ 
+ 
+ 
+ ----------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ 
+                                                                          Docker
+                                                                          
+      1.
+
+sudo yum update -y;sudo yum install docker -y;sudo systemctl start docker;sudo usermod -a -G docker ec2-user;sudo systemctl enable docker;sudo systemctl status docker
+
+2.
+
+sudo yum install git
+
+3.git clone url
+
+4. wget https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64
+
+5. ls -lrt
+
+6. sudo chmod +x docker-compose-linux-x86_64
+
+7. ls -lrt
+
+8.sudo mv docker-compose-linux-x86_64 docker-compose
+
+9.sudo mv docker-compose /usr/local/bin/docker-compose
+
+10. Go to directory
+
+11. docker-compose up -d
+
+
+
+To push image to our dockerHub
+
+1.docker build -t muttenipavankumar/electricitybillpaymentapp_api .
+
+2.docker login
+  enter
+   username
+   password
+
+3. docker push muttenipavankumar/electricitybillpaymentapp_api 
+
+
+
+                                                                    
+
+
+
+
+
+
+
+
